@@ -1,9 +1,7 @@
 package com.leaf.Care.dto;
 
-import java.util.Objects;
-
 /**
- * @author : Rusiru on 21-Jul-19.
+ * @author : rusiru on 7/27/19.
  */
 public class DoctorDTO {
 
@@ -42,32 +40,5 @@ public class DoctorDTO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("DoctorDTO{");
-        sb.append("id=").append(id);
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", contactNo='").append(contactNo).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        DoctorDTO doctorDTO = (DoctorDTO) o;
-        return Objects.equals(id, doctorDTO.id) &&
-                Objects.equals(name, doctorDTO.name) &&
-                Objects.equals(contactNo, doctorDTO.contactNo) &&
-                Objects.equals(email, doctorDTO.email);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, contactNo, email);
     }
 }
