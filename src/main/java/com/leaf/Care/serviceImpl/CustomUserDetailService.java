@@ -25,14 +25,14 @@ import com.leaf.Care.enums.DefaultStatusEnum;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService{
-	
+
 	private SysUserDAO sysUserDAO;
 	private SysRoleAuthorityDAO sysRoleAuthorityDAO;
 	private SysUserAuthorityDAO sysUserAuthorityDAO;
-	
+
 
 	@Autowired
-	public CustomUserDetailService(SysUserDAO sysUserDAO,SysRoleAuthorityDAO sysRoleAuthorityDAO,SysUserAuthorityDAO sysUserAuthorityDAO) {		
+	public CustomUserDetailService(SysUserDAO sysUserDAO,SysRoleAuthorityDAO sysRoleAuthorityDAO,SysUserAuthorityDAO sysUserAuthorityDAO) {
 		this.sysUserDAO = sysUserDAO;
 		this.sysRoleAuthorityDAO = sysRoleAuthorityDAO;
 		this.sysUserAuthorityDAO = sysUserAuthorityDAO;
@@ -57,9 +57,9 @@ public class CustomUserDetailService implements UserDetailsService{
 			throw e;
 		}
 	}
-	
+
 	private List<GrantedAuthority> getGrantedAuthoritiesForUser(SysUserEntity user) {
-        
+
         Map<String, SimpleGrantedAuthority> authorityMap = new HashMap<>();
         List<SysRoleEntity> sysRoles = new ArrayList<>();
         user.getSysUserSysRoleEntities()
@@ -73,10 +73,10 @@ public class CustomUserDetailService implements UserDetailsService{
                     	String key = roleAuthority.getAuthorityEntity().getAuthCode();
                     	if(! authorityMap.containsKey(key)){
                     		authorityMap.put(key, new SimpleGrantedAuthority(key));
-                    	}                    	
+                    	}
                     });
         }
-        
+
         sysUserAuthorityDAO.getSysUserAuthorityEntitiesBySysUser(user.getUsername())
         	.stream()
         	.forEach(userAuthority -> {
@@ -85,17 +85,17 @@ public class CustomUserDetailService implements UserDetailsService{
         		if(isEnabled == 1) {
                 	if(! authorityMap.containsKey(key)){
                 		authorityMap.put(key, new SimpleGrantedAuthority(key));
-                	}  
+                	}
         		}
         		else {
         			if(authorityMap.containsKey(key)){
                 		authorityMap.remove(key);
-                	}  
+                	}
         		}
- 
+
         	});
 
         return authorityMap.values().stream().collect(Collectors.toList());
-}
+	}
 
 }

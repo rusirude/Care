@@ -2,8 +2,8 @@ package com.leaf.Care.utility;
 
 import java.util.Date;
 
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import com.leaf.Care.entity.CommonEntity;
@@ -15,15 +15,16 @@ public class CommonMethod {
 	}
 	
 	public String getUsername() {
-		String username = "";
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		if (principal instanceof UserDetails) {
-		  username = ((UserDetails)principal).getUsername();
-		} else {
-		  username = principal.toString();
-		}
+//		String username = "";
+//		//Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		if (principal instanceof UserDetails) {
+//		  username = ((UserDetails)principal).getUsername();
+//		} else {
+//		  username = principal.toString();
+//		}
 		
-		return username;
+		return "SYSTE<";
+		//return username;
 	}
 	
 	public<T extends CommonEntity> void getPopulateEntityWhenInsert(T t) {

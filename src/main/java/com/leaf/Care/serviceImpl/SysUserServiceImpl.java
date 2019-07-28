@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,11 +46,11 @@ public class SysUserServiceImpl implements SysUserService {
 
 	private CommonMethod commonMethod;
 	
-	BCryptPasswordEncoder bCryptPasswordEncoder;
+	//BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Autowired	
 	public SysUserServiceImpl(SysUserDAO sysUserDAO, StatusDAO statusDAO, TitleDAO titleDAO,
-			StatusCategoryDAO statusCategoryDAO,MasterDataDAO masterDataDAO, SysUserAuthorityDAO sysUserAuthorityDAO, CommonMethod commonMethod,BCryptPasswordEncoder bCryptPasswordEncoder) {		
+			StatusCategoryDAO statusCategoryDAO,MasterDataDAO masterDataDAO, SysUserAuthorityDAO sysUserAuthorityDAO, CommonMethod commonMethod) {
 		this.sysUserDAO = sysUserDAO;
 		this.statusDAO = statusDAO;
 		this.titleDAO = titleDAO;
@@ -58,7 +58,7 @@ public class SysUserServiceImpl implements SysUserService {
 		this.masterDataDAO = masterDataDAO;
 		this.sysUserAuthorityDAO = sysUserAuthorityDAO;
 		this.commonMethod = commonMethod;
-		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+		//this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
 	
 
@@ -82,7 +82,7 @@ public class SysUserServiceImpl implements SysUserService {
 				StatusEntity statusEntity = statusDAO.findStatusEntityByCode(sysUserDTO.getStatusCode());
 				
 				sysUserEntity.setUsername(sysUserDTO.getUsername());
-				sysUserEntity.setPassword(bCryptPasswordEncoder.encode(defaultPasswordMasterDataEntity.getValue()));
+				//sysUserEntity.setPassword(bCryptPasswordEncoder.encode(defaultPasswordMasterDataEntity.getValue()));
 				sysUserEntity.setTitleEntity(titleEntity);
 				sysUserEntity.setName(sysUserDTO.getName());
 				sysUserEntity.setStatusEntity(statusEntity);

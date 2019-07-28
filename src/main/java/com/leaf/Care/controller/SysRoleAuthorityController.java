@@ -6,7 +6,7 @@ import com.leaf.Care.dto.common.DataTableResponseDTO;
 import com.leaf.Care.dto.common.ResponseDTO;
 import com.leaf.Care.service.SysRoleAuthorityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -30,7 +30,7 @@ public class SysRoleAuthorityController {
 //		return mv;
 //	}
 	
-	@PreAuthorize("hasRole('ROLE_ROLEAUTHORITY')")
+	//@PreAuthorize("hasRole('ROLE_ROLEAUTHORITY')")
 	@RequestMapping(path = "/loadRefDataForSysRoleAuthority", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseDTO<HashMap<String, Object>> loadysRoleAuthorityRefereceData() {
@@ -38,21 +38,21 @@ public class SysRoleAuthorityController {
 	}
 
 		
-	@PreAuthorize("hasRole('ROLE_ROLEAUTHORITY')")
+	//@PreAuthorize("hasRole('ROLE_ROLEAUTHORITY')")
 	@RequestMapping(path = "/loadAuthoritiesForSysRole", method = RequestMethod.POST)
 	@ResponseBody
 	public DataTableResponseDTO loadAuthoritiesForSysRole(@RequestBody SysRoleDTO sysRoleDTO) {
 		return sysRoleAuthorityService.getSysRoleAuthorityForSysRole(sysRoleDTO);
 	}		
 
-	@PreAuthorize("hasRole('ROLE_ROLEAUTHORITY')")
+	//@PreAuthorize("hasRole('ROLE_ROLEAUTHORITY')")
 	@RequestMapping(path = "/save", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseDTO<SysRoleAuthorityDTO> saveSysRoleAuthority(@RequestBody SysRoleAuthorityDTO sysRoleAuthorityDTO) {
 		return sysRoleAuthorityService.saveSysRoleAuthority(sysRoleAuthorityDTO);
 	}
 
-	@PreAuthorize("hasRole('ROLE_ROLEAUTHORITY')")
+	//@PreAuthorize("hasRole('ROLE_ROLEAUTHORITY')")
 	@RequestMapping(path = "/delete", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseDTO<SysRoleAuthorityDTO> deleteSysRoleAuthority(@RequestBody SysRoleAuthorityDTO sysRoleAuthorityDTO) {
